@@ -19,22 +19,20 @@
 
 void RGBLedDriver(int period, double RED_dc, double GREEN_dc, int RED_pos, int GREEN_pos)
 {
-    PWM_1_WritePeriod(period);
+    PWM_1_WritePeriod(period); // Setting the period 
+    PWM_1_WriteCompare1(period*(1 - RED_dc));
+    PWM_1_WriteCompare2(period*(1 - GREEN_dc)); // Setting the compare values 
     if (RED_pos > 0) // The first edge in the red LED behaviour is positive (switch on)
     {
         PWM_1_SetCompareMode1(PWM_1__B_PWM__LESS_THAN);
-        PWM_1_WriteCompare1(period*RED_dc);
     } else {  // The first edge in the red LED behaviour is negative (switch off)
         PWM_1_SetCompareMode1(PWM_1__B_PWM__GREATER_THAN);
-        PWM_1_WriteCompare1(period*(1 - RED_dc));
     }
     if (GREEN_pos > 0) // The first edge in the green LED behaviour is positive (switch on)
     {
         PWM_1_SetCompareMode2(PWM_1__B_PWM__LESS_THAN);
-        PWM_1_WriteCompare2(period*GREEN_dc);
     } else {  // The first edge in the green LED behaviour is negative (switch off)
         PWM_1_SetCompareMode2(PWM_1__B_PWM__GREATER_THAN);
-        PWM_1_WriteCompare2(period*(1 - GREEN_dc));
     }
 }
 
