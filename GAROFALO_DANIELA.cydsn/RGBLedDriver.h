@@ -10,4 +10,16 @@
  * ========================================
 */
 
+/* 
+    File RGBLedDriver.h
+    Function aimed to include the library necessary to implement correctly the function RGBLedDriver
+    Author: Daniela Garofalo
+*/
+
+#ifndef __RGB_LED_DRIVER_H__
+    #define __RGB_LED_DRIVER_H__
+    
+    #include <PWM_1.h>
+#endif
+
 /* [] END OF FILE */
